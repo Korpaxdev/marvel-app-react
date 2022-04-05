@@ -1,0 +1,46 @@
+@import "src/scss/modules/variables";
+.random-today {
+  padding: 40px;
+  background-color: $secondary;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  // .random-today__title
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  @media (max-width: #{$container}px) {
+    padding: 40px calc(20px + (40 - 20) * ((100vw - #{$tablet}px) / (#{$container} - #{$tablet})));
+
+    &__title {
+      font-size: calc(22px + (24 - 22) * ((100vw - #{$tablet}px) / (#{$container} - #{$tablet})));
+      line-height: calc(26px + (28 - 26) * ((100vw - #{$tablet}px) / (#{$container} - #{$tablet})));
+    }
+  }
+  @media (max-width: #{$tablet}px) {
+    padding: 40px;
+    min-height: 260px;
+    &__title {
+     font-size: 22px;
+     line-height: 26px;
+   }
+  }
+  @media (max-width: #{650}px) {
+    padding: calc(20px + (40 - 20) * ((100vw - #{$end}px) / (#{650} - #{$end})));
+    min-height: calc(200px + (280 - 200) * ((100vw - #{$end}px) / (#{650} - #{$end})));
+    &__title {
+      text-align: center;
+      font-size: calc(16px + (22 - 16) * ((100vw - #{$end}px) / (#{650} - #{$end})));
+      line-height: calc(19px + (26 - 19) * ((100vw - #{$end}px) / (#{650} - #{$end})));
+    }
+    &__btn {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

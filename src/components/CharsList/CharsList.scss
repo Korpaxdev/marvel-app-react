@@ -1,0 +1,27 @@
+@import "src/scss/modules/variables";
+
+
+.chars-list {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  align-items: center;
+  gap: 20px;
+  &__wrapper {
+    flex: 0 0 700px
+  }
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+  }
+  @media (max-width: #{$mobile}px) {
+    grid-template-columns: 1fr;
+    &__wrapper {
+      flex: 1 1 auto;
+    }
+    &__btn {
+      margin-top: calc(30px + (80 - 30) * ((100vw - #{$end}px) / (#{$mobile} - #{$end})));
+    }
+  }
+}

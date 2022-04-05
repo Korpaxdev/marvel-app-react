@@ -1,0 +1,173 @@
+@import "src/scss/modules/variables";
+
+.char-info {
+  width: 100%;
+  &__wrapper {
+
+  }
+  &__content {
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: min-content;
+    background-color: #fff;
+  }
+  &__close {
+    display: none;
+  }
+
+  // .char-info__head
+  &__head {
+    display: flex;
+    gap: 20px;
+  }
+
+  // .char-info__img
+  &__img {
+    flex: 0 0 150px;
+    height: 150px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+      object-fit: fill;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  // .char-info__head-right
+  &__head-right {
+
+  }
+
+  // .char-info__title
+  &__title {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+
+  }
+
+  // .char-info__btns
+  &__btns {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: min-content;
+  }
+
+  // .char-info__description
+  &__description {
+    margin-top: 20px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  // .char-info__subtitle
+  &__subtitle {
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  // .char-info__comics-list
+  &__comics-list {
+    margin-top: 20px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  // .char-info__comics-list-item
+  &__comics-list-item {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 5px 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  @media (max-width: #{$container}px) {
+    position: fixed;
+    width: 100%;
+    min-height: 100%;
+    overflow-y: scroll;
+    visibility: hidden;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    &_active {
+      visibility: visible;
+    }
+    &__content {
+      position: absolute;
+      width: 460px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &__close {
+      display: block;
+      position: absolute;
+      right: 25px;
+      top: 25px;
+      border: none;
+      background-color: transparent;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    &__overlay {
+      position: fixed;
+      width: 100vw;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      min-height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  @media (max-width: #{$small}px) {
+    &__content {
+      width: 100%;
+      min-height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      transform: none;
+    }
+  }
+  @media (max-height: #{850}px) and (min-width: #{$small}px) {
+    &__content {
+      top: 0;
+      transform: translateX(-50%);
+    }
+  }
+  @media (max-width: #{500}px) {
+    &__head {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &__title {
+      text-align: center;
+    }
+    &__img {
+      flex: 0 0 auto;
+      width: 150px;
+      height: 150px;
+    }
+    &__description {
+      text-align: center;
+    }
+    &__btns {
+      justify-content: center;
+      align-items: center;
+      width: auto;
+    }
+  }
+}

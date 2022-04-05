@@ -1,0 +1,31 @@
+@import "src/scss/modules/variables";
+.error-message {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // .error-message__img
+  &__img {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    img {
+      object-fit: fill;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__title {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 24px;
+  }
+  @media (max-width: #{650}px) {
+    &__title {
+      font-size: calc(20px + (24 - 20) * ((100vw - #{$end}px) / (#{650} - #{$end})));
+    }
+  }
+}

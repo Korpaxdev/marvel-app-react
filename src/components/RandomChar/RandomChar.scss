@@ -1,0 +1,103 @@
+@import "src/scss/modules/variables";
+
+.random-char {
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  min-height: 280px;
+  padding: 40px;
+  // .random-char__wrapper
+  &__wrapper {
+    width: 100%;
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 50px;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  // .random-char__img
+  &__img {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    overflow: hidden;
+    img {
+      object-fit: fill;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // .random-char__description
+  &__description {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:20px
+  }
+
+  // .random-char__title
+  &__title {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  // .random-char__text
+  &__text {
+    flex: 1 1 auto;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  // .random-char__buttons
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @media (max-width: #{$container}px) {
+    padding: 40px calc(20px + (40 - 20) * ((100vw - #{$tablet}px) / (#{$container} - #{$tablet})));
+    &__wrapper {
+      gap: calc(20px + (50 - 20) * ((100vw - #{$tablet}px) / (#{$container} - #{$tablet})))
+    }
+  }
+  @media (max-width: #{$tablet}px) {
+    padding: 40px;
+    &__wrapper {
+      gap: 50px
+    }
+  }
+  @media (max-width: #{650}px) {
+    padding: calc(20px + (40 - 20) * ((100vw - #{$end}px) / (#{650} - #{$end})));
+    &__wrapper {
+      gap: calc(20px + (50 - 20) * ((100vw - #{$small}px) / (#{650} - #{$small})))
+    }
+  }
+  @media (max-width: #{$small}px) {
+    min-height: calc(340px + (400 - 340) * ((100vw - #{$end}px) / (#{$small} - #{$end})));
+    &__wrapper {
+      grid-template-columns: 1fr;
+      grid-template-rows: calc(100px + (150 - 100) * ((100vw - #{$end}px) / (#{$small} - #{$end}))) 1fr ;
+      gap: 20px;
+    }
+    &__img {
+      width: calc(100px + (150 - 100) * ((100vw - #{$end}px) / (#{$small} - #{$end})));
+      height: calc(100px + (150 - 100) * ((100vw - #{$end}px) / (#{$small} - #{$end})));
+      justify-self: center;
+    }
+    &__title {
+      text-align: center;
+    }
+    &__text {
+      text-align: center;
+    }
+    &__buttons {
+      justify-content: center;
+      gap: 25px;
+    }
+  }
+}

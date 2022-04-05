@@ -1,0 +1,20 @@
+@import "src/scss/modules/variables";
+
+.characters-layout {
+  padding-top: 100px;
+  // .characters-layout__wrapper
+  &__wrapper {
+    display: flex;
+    gap: 50px
+  }
+
+  @media (max-width: #{$container}px) {
+    &__wrapper {
+      gap: 0;
+      justify-content: center;
+    }
+  }
+  @media (max-width: #{$tablet}px) {
+    padding-top: calc(30px + (100 - 30) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+  }
+}

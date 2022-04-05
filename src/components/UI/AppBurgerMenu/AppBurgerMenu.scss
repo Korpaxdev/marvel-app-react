@@ -1,0 +1,29 @@
+.burger-menu {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  span {
+    width: 100%;
+    flex: 0 0 2px;
+    background-color: #000;
+    transition: all .4s ease;
+  }
+}
+.burger-menu.active {
+  span:first-child {
+    transform: translateY(12px) rotate(-45deg);
+  }
+  span:nth-child(2) {
+    opacity: 0;
+  }
+  span:last-child {
+    transform: translateY(-12px) rotate(45deg);
+  }
+
+}
