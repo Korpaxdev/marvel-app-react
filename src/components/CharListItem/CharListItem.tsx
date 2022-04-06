@@ -3,17 +3,18 @@ import React from 'react';
 import './CharListItem.scss';
 import { iChar } from '../../interfaces/interfaces';
 import { useDispatch } from 'react-redux';
-import { selectedChar } from '../../store/actions';
+import { selectedChar } from '../../redux/actions/charInfoActions';
+
 
 const CharListItem = ({ chars }: { chars: iChar }) => {
-  const { name, thumbnail, id } = chars;
+  const { name, thumbnail } = chars;
   const dispatch = useDispatch();
 
   return (
     <li
       className="char-list-item"
       tabIndex={0}
-      onClick={() => dispatch(selectedChar(id))}
+      onClick={() => dispatch(selectedChar(chars))}
     >
       <div className="char-list-item__img">
         <img src={thumbnail} alt={name} />

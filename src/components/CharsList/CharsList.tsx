@@ -1,20 +1,35 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import useMarvelServices from 'hooks/useMarvelServices';
+import React, { useEffect, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import CharListItem from '../CharListItem/CharListItem';
 import AppLoading from '../UI/AppLoading/AppLoading';
 import AppErrorMessage from '../UI/AppErrorMessage/AppErrorMessage';
 import AppButton from '../UI/AppButton/AppButton';
 
-import { RootState } from 'store/store';
-import { STATUS } from 'utils/const';
+import { RootState } from 'redux/store';
+import { BUTTONS_LABEL, STATUS } from 'utils/const';
 import './CharsList.scss';
+import { fetchCharList } from '../../redux/actions/charListActions';
 
 const CharsList = () => {
-  const { getAllChars } = useMarvelServices();
-  const { chars, status } = useSelector((state: RootState) => state.charsList);
-  const isDisabled = status === STATUS.LOADING;
+  const { chars, status, isEnded } = useSelector(
+    ({ charList }: RootState) => charList
+  );
+  const dispatch = useDispatch();
+  const isDisabled = status === STATUS.LOADING || isEnded;
+
+  const buttonLabel = useMemo(() => {
+    if (status === STATUS.LOADING) {
+      return BUTTONS_LABEL.LOADING;
+    } else if (isEnded) {
+      return BUTTONS_LABEL.ENDED;
+    }
+    return BUTTONS_LABEL.LOAD_MORE;
+  }, [status, isEnded]);
+
+  const getAllChars = () => {
+    dispatch(fetchCharList());
+  };
 
   useEffect(() => {
     if (!chars.length) {
@@ -40,7 +55,7 @@ const CharsList = () => {
           disabled={isDisabled}
           onClick={getAllChars}
         >
-          {status === STATUS.LOADING ? 'Loading...' : 'Load more'}
+          {buttonLabel}
         </AppButton>
       </div>
     </div>

@@ -1,8 +1,9 @@
 import React from 'react';
+import { Dispatch } from 'redux';
 
 export interface iButton {
   as: 'button' | 'a';
-  type: 'primary' | 'secondary';
+  type: string;
   href?: string;
   children: React.ReactNode;
   onClick?: () => void;
@@ -20,10 +21,9 @@ export interface iBurgerMenu {
   openMenu: () => void;
 }
 
-export interface iResponse {
-  data: {
-    results: [];
-  };
+export interface iUrlNotTransform {
+  url: string;
+  type: string;
 }
 
 export interface iCharNotTransform {
@@ -41,12 +41,13 @@ export interface iCharNotTransform {
       }
     ];
   };
-  urls: [
-    {
-      url: string;
-      type: string;
-    }
-  ];
+  urls: iUrlNotTransform[];
+}
+
+export interface iUrl {
+  label: string;
+  url: string;
+  type: string;
 }
 
 export interface iChar {
@@ -54,26 +55,34 @@ export interface iChar {
   name: string;
   description: string;
   thumbnail: string;
+  links: iUrl[];
+  comics: string[]
 }
 
-interface iRandomChar {
+export interface iRandomChar {
   char: iChar | null;
   status: string;
 }
 
-interface iCharsList {
+export interface iCharsList {
   chars: iChar[] | [];
   status: string;
   offset: number;
-}
-interface iCharInfo {
-  selectedChar: iChar | null,
-  openModal: boolean
+  isEnded: boolean;
 }
 
-export interface iInitialState {
-  type: string;
-  randomChar: iRandomChar;
-  charsList: iCharsList;
-  charInfo: iCharInfo
+export interface iCharInfo {
+  selectedChar: iChar | null;
+  isOpen: boolean;
+}
+
+export interface iAction {
+  type?: string;
+  payload?: any;
+}
+
+export interface iRequest {
+  url: string;
+  dispatch: Dispatch;
+  statusAction: (status: string) => { type: string };
 }

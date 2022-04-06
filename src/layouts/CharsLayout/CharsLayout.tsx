@@ -1,6 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from 'store/store';
 import CharsList from 'components/CharsList/CharsList';
 
 import './CharsLayout.scss';

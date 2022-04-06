@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import type { RootState } from 'store/store';
+import type { RootState } from 'redux/store';
 import { iMenu } from 'interfaces/interfaces';
 
 import './AppMenu.scss';
 
 const Menu = ({ showMenu, closeMenu }: iMenu) => {
-  const type = useSelector<RootState>((state) => state.type);
+  const type = useSelector<RootState>(({ screen }) => screen.type);
 
   return (
     <div className={showMenu ? 'menu-wrapper active' : 'menu-wrapper'}>

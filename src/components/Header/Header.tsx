@@ -4,12 +4,12 @@ import { useSelector } from 'react-redux';
 import Menu from '../UI/AppMenu/AppMenu';
 import AppBurgerMenu from '../UI/AppBurgerMenu/AppBurgerMenu';
 // -------------------> Types <------------------- //
-import type { RootState } from '../../store/store';
+import type { RootState } from 'redux/store';
 // -------------------> styles <------------------- //
 import './Header.scss';
 
 const Header = () => {
-  const type = useSelector<RootState>((state) => state.type);
+  const type = useSelector<RootState>(({ screen }) => screen.type);
   const [showMenu, setShowMenu] = useState(false);
 
   const closeMenu = () => {

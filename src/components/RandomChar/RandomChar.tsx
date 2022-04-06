@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from 'store/store';
-import useMarvelServices from 'hooks/useMarvelServices';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'redux/store';
 
 import AppButton from '../UI/AppButton/AppButton';
 import AppLoading from '../UI/AppLoading/AppLoading';
@@ -11,25 +10,26 @@ import { STATUS } from 'utils/const';
 
 import './RandomChar.scss';
 import AppErrorMessage from '../UI/AppErrorMessage/AppErrorMessage';
+import { fetchRandomChar } from '../../redux/actions/charRandomActions';
 
 const RandomChar = () => {
-  const { getRandomChar } = useMarvelServices();
-  const char = useSelector(({ randomChar }: RootState) => randomChar.char);
-  const status = useSelector(({ randomChar }: RootState) => randomChar.status);
+  const char = useSelector(({ charRandom }: RootState) => charRandom.char);
+  const status = useSelector(({ charRandom }: RootState) => charRandom.status);
+  const dispatch = useDispatch();
   useEffect(() => {
-    getRandomChar();
+    dispatch(fetchRandomChar());
   }, []);
   return (
     <article className="random-char">
       {status === STATUS.LOADING ? <AppLoading /> : null}
-      {status === STATUS.ERROR ? <AppErrorMessage/> : null}
+      {status === STATUS.ERROR ? <AppErrorMessage /> : null}
       {char && status === STATUS.DONE ? <ViewChar char={char} /> : null}
     </article>
   );
 };
 
 function ViewChar({ char }: { char: iChar }) {
-  let { name, description, thumbnail } = char;
+  let { name, description, thumbnail, links } = char;
   if (description.length > 200) {
     description = description.slice(0, 200) + '...';
   }
@@ -42,12 +42,11 @@ function ViewChar({ char }: { char: iChar }) {
         <h2 className="random-char__title">{name}</h2>
         <p className="random-char__text">{description}</p>
         <div className="random-char__buttons">
-          <AppButton as="a" type="primary" href="#">
-            Homepage
-          </AppButton>
-          <AppButton as="a" type="secondary" href="#">
-            Wiki
-          </AppButton>
+          {links.map(({ type, url, label }) => (
+            <AppButton as="a" type={type} href={url} key={type}>
+              {label}
+            </AppButton>
+          ))}
         </div>
       </div>
     </div>

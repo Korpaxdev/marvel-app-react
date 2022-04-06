@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { type } from '../store/actions';
+import { type } from '../redux/actions/screenActions';
 
 export default function useResponsiveType(media: { [prop: string]: string }) {
   const matchMedias = Object.values(media).map((item) => matchMedia(item));

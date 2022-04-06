@@ -2,31 +2,33 @@ import React, { useEffect } from 'react';
 
 import './CharInfo.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
+import { RootState } from '../../redux/store';
 import AppButton from '../UI/AppButton/AppButton';
-import { closeSelectedModal } from '../../store/actions';
 import { iChar } from '../../interfaces/interfaces';
 import AppSkeleton from '../UI/AppSkeleton/AppSkeleton';
+import { SCREEN_TYPE } from 'utils/const';
+import { closeSelectedModal } from 'redux/actions/charInfoActions';
 
 const CharInfo = () => {
-  const { selectedChar, openModal } = useSelector(
+  const { selectedChar, isOpen } = useSelector(
     (state: RootState) => state.charInfo
   );
+  const type = useSelector(({ screen }: RootState) => screen.type);
   const dispatch = useDispatch();
   const closeModal = () => {
     dispatch(closeSelectedModal());
   };
-  useEffect(()=>{
-    if (openModal) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
+  useEffect(() => {
+    if (type !== SCREEN_TYPE.DESKTOP) {
+      isOpen
+        ? (document.body.style.overflow = 'hidden')
+        : (document.body.style.overflow = '');
     }
-  },[openModal])
+  }, [isOpen, type]);
 
   return (
-    <div className={openModal ? `char-info char-info_active` : `char-info`}>
-      {selectedChar ? (
+    <div className={isOpen ? `char-info char-info_active` : `char-info`}>
+      {selectedChar && isOpen ? (
         <ViewCharInfo closeModal={closeModal} selectedChar={selectedChar} />
       ) : (
         <AppSkeleton />
@@ -34,6 +36,7 @@ const CharInfo = () => {
     </div>
   );
 };
+
 const ViewCharInfo = ({
   closeModal,
   selectedChar,
@@ -41,7 +44,10 @@ const ViewCharInfo = ({
   closeModal: () => void;
   selectedChar: iChar;
 }) => {
-  const {name, thumbnail, description} = selectedChar
+  let { name, thumbnail, description, links, comics } = selectedChar;
+  if (comics.length > 10) {
+    comics = comics.slice(0, 10);
+  }
   return (
     <div className="char-info__wrapper">
       <div className="char-info__overlay" onClick={closeModal}></div>
@@ -56,48 +62,22 @@ const ViewCharInfo = ({
           <div className="char-info__head-right">
             <h2 className="char-info__title">{name}</h2>
             <div className="char-info__btns">
-              <AppButton as="a" type="primary" href="#">
-                Homepage
-              </AppButton>
-              <AppButton as="a" type="secondary" href="#">
-                Wiki
-              </AppButton>
+              {links.map(({ type, url, label }) => (
+                <AppButton as="a" type={type} href={url} key={type}>
+                  {label}
+                </AppButton>
+              ))}
             </div>
           </div>
         </div>
         <p className="char-info__description">{description}</p>
         <h3 className="char-info__subtitle">Comics:</h3>
         <ul className="char-info__comics-list">
-          <li className="char-info__comics-list-item">
-            All-Winners Squad: Band of Heroes (2011) #3
-          </li>
-          <li className="char-info__comics-list-item">
-            All-Winners Squad: Band of Heroes (2011) #3
-          </li>
-          <li className="char-info__comics-list-item">
-            All-Winners Squad: Band of Heroes (2011) #3
-          </li>
-          <li className="char-info__comics-list-item">
-            All-Winners Squad: Band of Heroes (2011) #3
-          </li>
-          <li className="char-info__comics-list-item">
-            All-Winners Squad: Band of Heroes (2011) #3
-          </li>
-          <li className="char-info__comics-list-item">
-            All-Winners Squad: Band of Heroes (2011) #3
-          </li>
-          <li className="char-info__comics-list-item">
-            All-Winners Squad: Band of Heroes (2011) #3
-          </li>
-          <li className="char-info__comics-list-item">
-            All-Winners Squad: Band of Heroes (2011) #3
-          </li>
-          <li className="char-info__comics-list-item">
-            All-Winners Squad: Band of Heroes (2011) #3
-          </li>
-          <li className="char-info__comics-list-item">
-            All-Winners Squad: Band of Heroes (2011) #3
-          </li>
+          {comics.map((name, i) => (
+            <li className="char-info__comics-list-item" key={i}>
+              {name}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
