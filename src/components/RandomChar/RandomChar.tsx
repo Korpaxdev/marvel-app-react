@@ -1,23 +1,24 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'redux/store';
+
+import useAppActions from '../../hooks/useAppActions';
+import useAppSelector from 'hooks/useAppSelector';
 
 import AppButton from '../UI/AppButton/AppButton';
 import AppLoading from '../UI/AppLoading/AppLoading';
+import AppErrorMessage from '../UI/AppErrorMessage/AppErrorMessage';
 
-import { iChar } from 'interfaces/interfaces';
+import { iChar } from 'types/chars/iChars';
+
 import { STATUS } from 'utils/const';
 
 import './RandomChar.scss';
-import AppErrorMessage from '../UI/AppErrorMessage/AppErrorMessage';
-import { fetchRandomChar } from '../../redux/actions/charRandomActions';
 
 const RandomChar = () => {
-  const char = useSelector(({ charRandom }: RootState) => charRandom.char);
-  const status = useSelector(({ charRandom }: RootState) => charRandom.status);
-  const dispatch = useDispatch();
+  const char = useAppSelector(({ charRandom }) => charRandom.char);
+  const status = useAppSelector(({ charRandom }) => charRandom.status);
+  const { fetchRandomChar } = useAppActions();
   useEffect(() => {
-    dispatch(fetchRandomChar());
+    fetchRandomChar();
   }, []);
   return (
     <article className="random-char">

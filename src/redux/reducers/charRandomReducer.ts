@@ -1,4 +1,5 @@
-import { iAction, iRandomChar } from '../../interfaces/interfaces';
+import { iRandomChar, randomAction } from 'types/chars/charRandom';
+
 import { ACTIONS } from 'utils/const';
 
 const initialState: iRandomChar = {
@@ -6,7 +7,7 @@ const initialState: iRandomChar = {
   status: '',
 };
 
-const charRandomReducer = (state = initialState, action:iAction) => {
+const charRandomReducer = (state = initialState, action:randomAction):iRandomChar => {
   switch (action.type) {
     case ACTIONS.SET_RANDOM:
       return {

@@ -1,0 +1,20 @@
+@import "src/scss/modules/variables";
+.char-bg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  width: 400px;
+  max-height: 400px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+  @media (max-width: #{$container}px) {
+    width: calc(270px + (400 - 270) * ((100vw - #{$end}px) / (#{$container} - #{$end})));
+  }
+  @media (max-width: #{$mobile}px) {
+    position: relative;
+    margin: 0 auto;
+  }
+}

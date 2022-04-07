@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { type } from '../redux/actions/screenActions';
 
-export default function useResponsiveType(media: { [prop: string]: string }) {
-  const matchMedias = Object.values(media).map((item) => matchMedia(item));
+import { MEDIA_QUERIES } from '../utils/const';
+import useAppActions from './useAppActions';
+
+export default function useResponsiveType() {
+  const matchMedias = Object.values(MEDIA_QUERIES).map((item) =>
+    matchMedia(item)
+  );
   let activeType = '';
-  const dispatch = useDispatch();
+  const { type } = useAppActions();
   useEffect(() => {
     matchMedias.forEach((item) => {
       item.addEventListener('change', changeType);
@@ -20,9 +23,9 @@ export default function useResponsiveType(media: { [prop: string]: string }) {
 
   function changeType(e: MediaQueryListEvent | MediaQueryList) {
     if (e.matches) {
-      for (const query in media) {
-        if (media[query] === e.media) {
-          dispatch(type(query));
+      for (const query in MEDIA_QUERIES) {
+        if (MEDIA_QUERIES[query as keyof typeof MEDIA_QUERIES] === e.media) {
+          type(query);
         }
       }
     }

@@ -41,6 +41,7 @@
     visibility: hidden;
     transition: visibility .4s ease;
     overflow-y: scroll;
+    z-index: 5;
   }
   .menu__overlay {
     width: 100%;

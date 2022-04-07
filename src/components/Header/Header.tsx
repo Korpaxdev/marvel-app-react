@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import useAppSelector from '../../hooks/useAppSelector';
 
 import Menu from '../UI/AppMenu/AppMenu';
 import AppBurgerMenu from '../UI/AppBurgerMenu/AppBurgerMenu';
-// -------------------> Types <------------------- //
-import type { RootState } from 'redux/store';
-// -------------------> styles <------------------- //
+
 import './Header.scss';
 
 const Header = () => {
-  const type = useSelector<RootState>(({ screen }) => screen.type);
+  const type = useAppSelector(({ screen }) => screen.type);
   const [showMenu, setShowMenu] = useState(false);
 
   const closeMenu = () => {
@@ -30,7 +28,11 @@ const Header = () => {
           </a>
           <Menu showMenu={showMenu} closeMenu={closeMenu} />
           {type === 'MOBILE' ? (
-            <AppBurgerMenu closeMenu={closeMenu} showMenu={showMenu} openMenu={openMenu} />
+            <AppBurgerMenu
+              closeMenu={closeMenu}
+              showMenu={showMenu}
+              openMenu={openMenu}
+            />
           ) : null}
         </nav>
       </div>

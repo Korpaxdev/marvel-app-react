@@ -1,19 +1,22 @@
-import { iChar, iCharNotTransform } from 'interfaces/interfaces';
-import { ACTIONS, API } from 'utils/const';
-import useRequest from 'hooks/useRequest';
-import _transformCharacters from '../../utils/_transformCharacters';
 import { Dispatch } from 'redux';
+import useRequest from 'hooks/useRequest';
+import _transformCharacters from 'utils/_transformCharacters';
 
-export const randomChar = (char: iChar) => ({
+import { iSetRandom, iSetRandomStatus, randomAction } from 'types/chars/charRandom';
+import { iChar, iCharNotTransform } from 'types/chars/iChars';
+
+import { ACTIONS, API } from 'utils/const';
+
+export const randomChar = (char: iChar):iSetRandom => ({
   type: ACTIONS.SET_RANDOM,
   payload: char,
 });
-export const randomStatus = (status: string) => ({
+export const randomStatus = (status: string):iSetRandomStatus => ({
   type: ACTIONS.SET_RANDOM_STATUS,
   payload: status,
 });
 
-export const fetchRandomChar = () => async (dispatch: Dispatch) => {
+export const fetchRandomChar = () => async (dispatch: Dispatch<randomAction>) => {
   const offset = Math.round(Math.random() * 1560);
   const url = `${API.BASE}/characters?limit=1&offset=${offset}&${API.KEY}`
   const data = await useRequest(url, dispatch, randomStatus)

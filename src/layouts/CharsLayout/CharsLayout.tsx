@@ -1,8 +1,9 @@
 import React from 'react';
+
 import CharsList from 'components/CharsList/CharsList';
+import CharInfo from 'components/CharInfo/CharInfo';
 
 import './CharsLayout.scss';
-import CharInfo from '../../components/CharInfo/CharInfo';
 
 const CharsLayout = () => {
   return (

@@ -1,16 +1,16 @@
 import React from 'react';
+import useAppSelector from 'hooks/useAppSelector';
 
 import AppButton from '../UI/AppButton/AppButton';
+
 import { BUTTONS_LABEL, STATUS } from 'utils/const';
 
 import './RandomCharToday.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
-import { fetchRandomChar } from '../../redux/actions/charRandomActions';
+import useAppActions from '../../hooks/useAppActions';
 
 const RandomCharToday = () => {
-  const status = useSelector(({ charRandom }: RootState) => charRandom.status);
-  const dispatch = useDispatch();
+  const status = useAppSelector(({ charRandom }) => charRandom.status);
+  const { fetchRandomChar } = useAppActions();
   const isDisabled = status === STATUS.LOADING;
 
   return (
@@ -25,7 +25,7 @@ const RandomCharToday = () => {
         <AppButton
           as="button"
           type="primary"
-          onClick={() => dispatch(fetchRandomChar())}
+          onClick={fetchRandomChar}
           disabled={isDisabled}
         >
           {isDisabled ? BUTTONS_LABEL.LOADING : BUTTONS_LABEL.TRY_IT}

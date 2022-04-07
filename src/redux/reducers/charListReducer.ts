@@ -1,5 +1,6 @@
-import { ACTIONS, CHARS__OFFSET } from '../../utils/const';
-import { iAction, iCharsList } from '../../interfaces/interfaces';
+import { charsListAction, iCharsList } from 'types/chars/charList';
+
+import { ACTIONS, CHARS__OFFSET } from 'utils/const';
 
 const initialState: iCharsList = {
   chars: [],
@@ -7,7 +8,8 @@ const initialState: iCharsList = {
   offset: CHARS__OFFSET,
   isEnded: false,
 };
-const charListReducer = (state = initialState, action: iAction) => {
+
+const charListReducer = (state = initialState, action: charsListAction):iCharsList => {
   switch (action.type) {
     case ACTIONS.SET_CHARACTERS_LIST:
       return {

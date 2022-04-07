@@ -1,5 +1,6 @@
 import React from 'react';
-import type { iBurgerMenu } from 'interfaces/interfaces';
+
+import { iBurgerMenu } from 'types/iUi';
 
 import './AppBurgerMenu.scss';
 

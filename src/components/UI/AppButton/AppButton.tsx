@@ -1,5 +1,6 @@
 import React from 'react';
-import type { iButton } from 'interfaces/interfaces';
+
+import { iButton } from 'types/iUi';
 
 import './AppButton.scss';
 
@@ -11,7 +12,6 @@ const AppButton = ({
   onClick,
   disabled,
 }: iButton) => {
-
   const className = `button button-${type}`;
   switch (as) {
     case 'a':

@@ -1,0 +1,16 @@
+.button-up {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .4s ease,
+  opacity .4s ease;
+}
+.button-up_active {
+  visibility: visible;
+  opacity: 1;
+}

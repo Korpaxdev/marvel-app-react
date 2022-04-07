@@ -1,7 +1,9 @@
 import React from 'react';
-import './RandomLayout.scss';
+
 import RandomChar from 'components/RandomChar/RandomChar';
-import RandomCharToday from '../../components/RandomCharToday/RandomCharToday';
+import RandomCharToday from 'components/RandomCharToday/RandomCharToday';
+
+import './RandomLayout.scss';
 
 const RandomLayout = () => {
   return (

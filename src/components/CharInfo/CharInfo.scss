@@ -3,7 +3,6 @@
 .char-info {
   width: 100%;
   &__wrapper {
-
   }
   &__content {
     padding: 25px;
@@ -130,6 +129,15 @@
       min-height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
     }
+    &__title {
+      padding-right: 40px;
+    }
+  }
+  @media (max-height: #{850}px) and (max-width: #{$container}px) {
+    &__content {
+      top: 0;
+      transform: translateX(-50%);
+    }
   }
   @media (max-width: #{$small}px) {
     &__content {
@@ -141,12 +149,7 @@
       transform: none;
     }
   }
-  @media (max-height: #{850}px) and (min-width: #{$small}px) {
-    &__content {
-      top: 0;
-      transform: translateX(-50%);
-    }
-  }
+
   @media (max-width: #{500}px) {
     &__head {
       flex-direction: column;
@@ -155,6 +158,7 @@
     }
     &__title {
       text-align: center;
+      padding-right: 0;
     }
     &__img {
       flex: 0 0 auto;

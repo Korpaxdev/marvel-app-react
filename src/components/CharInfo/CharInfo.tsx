@@ -1,35 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import useAppSelector from 'hooks/useAppSelector';
+import useAppActions from 'hooks/useAppActions';
+import useFixElem from '../../hooks/useFixElem';
+
+import AppButton from '../UI/AppButton/AppButton';
+import AppSkeleton from '../UI/AppSkeleton/AppSkeleton';
+
+import { iChar } from 'types/chars/iChars';
+
+import { SCREEN_TYPE } from 'utils/const';
 
 import './CharInfo.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
-import AppButton from '../UI/AppButton/AppButton';
-import { iChar } from '../../interfaces/interfaces';
-import AppSkeleton from '../UI/AppSkeleton/AppSkeleton';
-import { SCREEN_TYPE } from 'utils/const';
-import { closeSelectedModal } from 'redux/actions/charInfoActions';
 
 const CharInfo = () => {
-  const { selectedChar, isOpen } = useSelector(
-    (state: RootState) => state.charInfo
-  );
-  const type = useSelector(({ screen }: RootState) => screen.type);
-  const dispatch = useDispatch();
-  const closeModal = () => {
-    dispatch(closeSelectedModal());
-  };
+  const { selectedChar, isOpen } = useAppSelector((state) => state.charInfo);
+  const type = useAppSelector(({ screen }) => screen.type);
+  const { closeSelectedModal } = useAppActions();
+  const charInfo = useRef<HTMLDivElement | null>(null);
+
+  useFixElem(charInfo);
+
   useEffect(() => {
     if (type !== SCREEN_TYPE.DESKTOP) {
       isOpen
         ? (document.body.style.overflow = 'hidden')
         : (document.body.style.overflow = '');
+    } else {
+      if (isOpen) document.body.style.overflow = '';
     }
   }, [isOpen, type]);
 
   return (
-    <div className={isOpen ? `char-info char-info_active` : `char-info`}>
+    <div
+      className={isOpen ? `char-info char-info_active` : `char-info`}
+      ref={charInfo}
+    >
       {selectedChar && isOpen ? (
-        <ViewCharInfo closeModal={closeModal} selectedChar={selectedChar} />
+        <ViewCharInfo
+          closeModal={closeSelectedModal}
+          selectedChar={selectedChar}
+        />
       ) : (
         <AppSkeleton />
       )}
@@ -45,8 +55,11 @@ const ViewCharInfo = ({
   selectedChar: iChar;
 }) => {
   let { name, thumbnail, description, links, comics } = selectedChar;
-  if (comics.length > 10) {
-    comics = comics.slice(0, 10);
+  if (comics.length > 5) {
+    comics = comics.slice(0, 5);
+  }
+  if (!comics.length) {
+    comics.push(`This character doesn't have comics`)
   }
   return (
     <div className="char-info__wrapper">

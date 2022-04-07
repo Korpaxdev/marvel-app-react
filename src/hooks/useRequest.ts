@@ -1,10 +1,7 @@
 import { STATUS } from '../utils/const';
-import { Dispatch } from 'redux';
+import { requestType } from '../types/request';
 
-type statusAction = (status: string) => { type: string };
-type requestType =  (url: string, dispatch:Dispatch, statusAction: statusAction) => Promise<any>
-
-const useRequest:requestType = async (url, dispatch, statusAction) => {
+const useRequest: requestType = async (url, dispatch, statusAction) => {
   try {
     dispatch(statusAction(STATUS.LOADING));
     const response = await fetch(url);

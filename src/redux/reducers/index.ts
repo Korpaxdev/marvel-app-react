@@ -10,4 +10,7 @@ const rootReducer = combineReducers({
   charRandom: charRandomReducer,
   screen: screenReducer
 });
+
 export default rootReducer;
+
+export type RootState = ReturnType<typeof  rootReducer>
