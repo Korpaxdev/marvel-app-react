@@ -52,6 +52,10 @@ const useFixElem = (
     window.addEventListener('resize', resizeHandler);
     scrollHandler()
     resizeHandler()
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+      window.removeEventListener('resize', resizeHandler);
+    }
   }, []);
 };
 export default useFixElem;
