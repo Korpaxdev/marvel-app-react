@@ -1,6 +1,7 @@
 import {
   iChar,
   iCharNotTransform,
+  iComicsNotTransform,
   iUrl,
   iUrlNotTransform,
 } from '../types/chars/iChars';
@@ -22,6 +23,11 @@ const setLinks = (urls: iUrlNotTransform[]): iUrl[] => {
   return links;
 };
 
+const setComics = ({ items }: iComicsNotTransform) => {
+  if (!items.length) return [`This character doesn't have comics`];
+  return items.map(({ name }) => name);
+};
+
 export default function _transformCharacters(data: iCharNotTransform): iChar {
   const { id, description, name, thumbnail, urls, comics } = data;
   return {
@@ -30,6 +36,6 @@ export default function _transformCharacters(data: iCharNotTransform): iChar {
     name,
     thumbnail: `${thumbnail.path}.${thumbnail.extension}`,
     links: setLinks(urls),
-    comics: comics.items.map(({ name }) => name),
+    comics: setComics(comics),
   };
 }

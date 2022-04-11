@@ -1,19 +1,13 @@
 import { iChar } from './iChars';
 
-import { ACTIONS } from 'utils/const';
+import { STATUS } from 'utils/const';
+import { PayloadAction } from '@reduxjs/toolkit';
 
-
-export interface iSetRandom {
-  type: ACTIONS.SET_RANDOM,
-  payload: iChar
-}
-export interface iSetRandomStatus {
-  type: ACTIONS.SET_RANDOM_STATUS,
-  payload: string
-}
-
-export interface iRandomChar {
+export type tRandomCharInitialState = {
   char: iChar | null;
-  status: string;
+  status: STATUS | ''
 }
-export type randomAction = iSetRandom | iSetRandomStatus
+export type tSetRandomCharAction = PayloadAction<iChar>;
+export type tSetRandomCharStatusAction = PayloadAction<STATUS>;
+
+export type tRandomCharActions = tSetRandomCharAction | tSetRandomCharStatusAction;

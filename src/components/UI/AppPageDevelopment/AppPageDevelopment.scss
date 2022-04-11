@@ -1,0 +1,28 @@
+@import "src/scss/modules/variables";
+
+.development {
+  padding-top: 100px;
+  // .development__title
+  &__title {
+    text-align: center;
+  }
+ &__link-wrapper {
+   margin-top: 50px;
+   display: flex;
+   justify-content: center;
+ }
+  // .development__link
+  &__link {
+    padding: 10px 20px;
+    background-color: $primary;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 10px;
+  }
+  @media (max-width: #{$tablet}px) {
+    &__title {
+      font-size: calc(18px + (32 - 18) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+    }
+  }
+}
+

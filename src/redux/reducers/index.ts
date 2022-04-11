@@ -1,16 +1,13 @@
-import { combineReducers } from 'redux';
-import charInfoReducer from './charInfoReducer';
-import charListReducer from './charListReducer';
-import charRandomReducer from './charRandomReducer';
-import screenReducer from './screenReducer';
+import { charInfoReducer } from '../slices/charInfoSlice';
+import { charListReducer } from '../slices/charListSlice';
+import { screenReducer } from '../slices/screenSlice';
+import { charRandomReducer } from '../slices/charRandomSlice';
 
-const rootReducer = combineReducers({
+const rootReducer = {
   charInfo: charInfoReducer,
   charList: charListReducer,
   charRandom: charRandomReducer,
-  screen: screenReducer
-});
+  screen: screenReducer,
+};
 
 export default rootReducer;
-
-export type RootState = ReturnType<typeof  rootReducer>

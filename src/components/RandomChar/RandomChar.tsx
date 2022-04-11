@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 import useAppActions from '../../hooks/useAppActions';
 import useAppSelector from 'hooks/useAppSelector';
-
 import AppButton from '../UI/AppButton/AppButton';
 import AppLoading from '../UI/AppLoading/AppLoading';
 import AppErrorMessage from '../UI/AppErrorMessage/AppErrorMessage';
@@ -16,9 +15,10 @@ import './RandomChar.scss';
 const RandomChar = () => {
   const char = useAppSelector(({ charRandom }) => charRandom.char);
   const status = useAppSelector(({ charRandom }) => charRandom.status);
-  const { fetchRandomChar } = useAppActions();
+  const {fetchRandomChar} = useAppActions();
+
   useEffect(() => {
-    fetchRandomChar();
+    fetchRandomChar()
   }, []);
   return (
     <article className="random-char">

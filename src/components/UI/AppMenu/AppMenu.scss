@@ -6,6 +6,7 @@
   // .menu__item
   &__item {
     font-size: 24px;
+    user-select: none;
 
     &:not(:last-child) {
       &:after {

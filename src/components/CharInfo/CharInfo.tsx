@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import useAppSelector from 'hooks/useAppSelector';
-import useAppActions from 'hooks/useAppActions';
-import useFixElem from '../../hooks/useFixElem';
-
+import useFixElem from 'hooks/useFixElem';
 import AppButton from '../UI/AppButton/AppButton';
 import AppSkeleton from '../UI/AppSkeleton/AppSkeleton';
 
@@ -11,11 +9,11 @@ import { iChar } from 'types/chars/iChars';
 import { SCREEN_TYPE } from 'utils/const';
 
 import './CharInfo.scss';
+import useAppActions from '../../hooks/useAppActions';
 
 const CharInfo = () => {
   const { selectedChar, isOpen } = useAppSelector((state) => state.charInfo);
   const type = useAppSelector(({ screen }) => screen.type);
-  const { closeSelectedModal } = useAppActions();
   const charInfo = useRef<HTMLDivElement | null>(null);
 
   useFixElem(charInfo);
@@ -36,10 +34,7 @@ const CharInfo = () => {
       ref={charInfo}
     >
       {selectedChar && isOpen ? (
-        <ViewCharInfo
-          closeModal={closeSelectedModal}
-          selectedChar={selectedChar}
-        />
+        <ViewCharInfo selectedChar={selectedChar} />
       ) : (
         <AppSkeleton />
       )}
@@ -48,24 +43,20 @@ const CharInfo = () => {
 };
 
 const ViewCharInfo = ({
-  closeModal,
-  selectedChar,
+  selectedChar
 }: {
-  closeModal: () => void;
   selectedChar: iChar;
 }) => {
+  const {closeModal} = useAppActions()
   let { name, thumbnail, description, links, comics } = selectedChar;
   if (comics.length > 5) {
     comics = comics.slice(0, 5);
   }
-  if (!comics.length) {
-    comics.push(`This character doesn't have comics`)
-  }
   return (
     <div className="char-info__wrapper">
-      <div className="char-info__overlay" onClick={closeModal}></div>
+      <div className="char-info__overlay" onClick={()=>closeModal()}></div>
       <div className="char-info__content">
-        <button className="char-info__close" onClick={closeModal}>
+        <button className="char-info__close" onClick={()=>closeModal()}>
           X
         </button>
         <div className="char-info__head">

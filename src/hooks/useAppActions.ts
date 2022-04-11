@@ -1,20 +1,23 @@
 import { bindActionCreators } from 'redux';
-import * as charInfoActions from 'redux/actions/charInfoActions';
-import * as charRandomActions from 'redux/actions/charRandomActions';
-import * as charListActions from 'redux/actions/charListActions';
-import * as screenActions from 'redux/actions/screenActions';
+import * as charListActions from 'redux/actions/fetchCharList';
 import { useDispatch } from 'react-redux';
+import { screenActions } from '../redux/slices/screenSlice';
+import { charInfoActions } from '../redux/slices/charInfoSlice';
+import fetchCharList from 'redux/actions/fetchCharList';
+import fetchRandomChar from '../redux/actions/fetchRandomChar';
 
 const useAppActions = () => {
   const dispatch = useDispatch();
   return bindActionCreators(
     {
-      ...charInfoActions,
-      ...charRandomActions,
+      fetchCharList,
+      fetchRandomChar,
       ...charListActions,
       ...screenActions,
+      ...charInfoActions,
     },
     dispatch
   );
 };
+
 export default useAppActions;

@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-
-import { MEDIA_QUERIES } from '../utils/const';
 import useAppActions from './useAppActions';
+
+import { MEDIA_QUERIES, SCREEN_TYPE } from '../utils/const';
 
 export default function useResponsiveType() {
   const matchMedias = Object.values(MEDIA_QUERIES).map((item) =>
     matchMedia(item)
   );
   let activeType = '';
-  const { type } = useAppActions();
+  const { screenChangeType } = useAppActions();
   useEffect(() => {
     matchMedias.forEach((item) => {
       item.addEventListener('change', changeType);
@@ -25,7 +25,7 @@ export default function useResponsiveType() {
     if (e.matches) {
       for (const query in MEDIA_QUERIES) {
         if (MEDIA_QUERIES[query as keyof typeof MEDIA_QUERIES] === e.media) {
-          type(query);
+          screenChangeType(SCREEN_TYPE[query as keyof typeof SCREEN_TYPE]);
         }
       }
     }

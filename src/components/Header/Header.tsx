@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useAppSelector from '../../hooks/useAppSelector';
+import useAppSelector from 'hooks/useAppSelector';
 
 import Menu from '../UI/AppMenu/AppMenu';
 import AppBurgerMenu from '../UI/AppBurgerMenu/AppBurgerMenu';

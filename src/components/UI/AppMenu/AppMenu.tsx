@@ -1,5 +1,6 @@
 import React from 'react';
 import useAppSelector from 'hooks/useAppSelector';
+import { NavLink } from 'react-router-dom';
 
 import { iMenu } from 'types/iUi';
 
@@ -11,15 +12,15 @@ const Menu = ({ showMenu, closeMenu }: iMenu) => {
   return (
     <div className={showMenu ? 'menu-wrapper active' : 'menu-wrapper'}>
       <ul className="menu">
-        <li className="menu__item">
-          <a href="#" className="menu__link active">
+        <li className="menu__item" onClick={closeMenu}>
+          <NavLink to="/" className="menu__link">
             Characters
-          </a>
+          </NavLink>
         </li>
-        <li className="menu__item">
-          <a href="#" className="menu__link">
+        <li className="menu__item" onClick={closeMenu}>
+          <NavLink to="/comics" className="menu__link">
             Comics
-          </a>
+          </NavLink>
         </li>
       </ul>
       {type === 'MOBILE' ? (

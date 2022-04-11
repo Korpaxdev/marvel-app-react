@@ -1,19 +1,29 @@
 import React from 'react';
+import useAppActions from 'hooks/useAppActions';
 
 import { iChar } from 'types/chars/iChars';
 
 import './CharListItem.scss';
-import useAppActions from '../../hooks/useAppActions';
 
 const CharListItem = ({ chars }: { chars: iChar }) => {
   const { name, thumbnail } = chars;
-  const { selectedChar } = useAppActions();
+  const { setSelectedChar } = useAppActions();
+
+  const onKeyPressSelectedChar = (e: React.KeyboardEvent<HTMLLIElement>) => {
+    if (e.code === 'Enter') {
+      setSelectedChar(chars);
+    }
+  };
+  const onMouseSelectedChar = () => {
+    setSelectedChar(chars);
+  }
 
   return (
     <li
       className="char-list-item"
       tabIndex={0}
-      onClick={() => selectedChar(chars)}
+      onClick={onMouseSelectedChar}
+      onKeyPress={onKeyPressSelectedChar}
     >
       <div className="char-list-item__img">
         <img src={thumbnail} alt={name} />
