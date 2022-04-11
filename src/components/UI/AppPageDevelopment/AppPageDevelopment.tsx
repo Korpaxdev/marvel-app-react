@@ -5,7 +5,7 @@ import './AppPageDevelopment.scss';
 
 const AppPageDevelopment = () => {
   return (
-    <div className="development">
+    <section className="development">
       <div className="container">
         <h1 className="development__title">This page is in development...</h1>
         <div className='development__link-wrapper'>
@@ -14,7 +14,7 @@ const AppPageDevelopment = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

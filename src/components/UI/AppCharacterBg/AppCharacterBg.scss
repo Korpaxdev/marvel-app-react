@@ -2,7 +2,7 @@
 .char-bg {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 180px;
   z-index: -1;
   width: 400px;
   max-height: 400px;
@@ -16,5 +16,6 @@
   @media (max-width: #{$mobile}px) {
     position: relative;
     margin: 0 auto;
+    bottom: 0;
   }
 }

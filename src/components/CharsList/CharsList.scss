@@ -7,7 +7,8 @@
   align-items: center;
   gap: 20px;
   &__wrapper {
-    flex: 0 0 700px
+    flex: 0 0 700px;
+    height: 100%;
   }
   &__btn {
     display: flex;

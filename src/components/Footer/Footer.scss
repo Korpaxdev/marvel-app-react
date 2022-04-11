@@ -1,0 +1,66 @@
+@import "src/scss/modules/variables";
+
+.footer {
+  padding: 30px 20px;
+  background-color: $secondary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  // .footer__source
+  &__source {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  // .footer__title
+  &__title {
+    color: $add;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    flex: 0 0 auto;
+
+  }
+
+  // .footer__github-link
+  &__github-link {
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    flex-wrap: wrap;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+
+  // .footer__api
+  &__api {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  // .footer__marvel-link
+  &__marvel-link {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+  &__dev-link {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+  }
+}

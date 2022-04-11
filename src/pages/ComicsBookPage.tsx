@@ -3,9 +3,7 @@ import AppPageDevelopment from '../components/UI/AppPageDevelopment/AppPageDevel
 
 const ComicsBookPage = () => {
   return (
-    <div>
-      <AppPageDevelopment />
-    </div>
+    <AppPageDevelopment />
   );
 };
 

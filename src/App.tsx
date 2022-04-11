@@ -5,16 +5,20 @@ import CharactersPage from './pages/CharactersPage';
 import AppButtonUp from './components/UI/AppButtonUp/AppButtonUp';
 import Header from './components/Header/Header';
 import ComicsBookPage from './pages/ComicsBookPage';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   useResponsiveType();
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<CharactersPage />} />
-        <Route path="/comics" element={<ComicsBookPage />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<CharactersPage />} />
+          <Route path="/comics" element={<ComicsBookPage />} />
+        </Routes>
+      </main>
+      <Footer/>
       <AppButtonUp />
     </>
   );
