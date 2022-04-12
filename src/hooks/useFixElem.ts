@@ -50,12 +50,12 @@ const useFixElem = (
   useEffect(() => {
     window.addEventListener('scroll', scrollHandler);
     window.addEventListener('resize', resizeHandler);
-    scrollHandler()
-    resizeHandler()
+    scrollHandler();
+    resizeHandler();
     return () => {
       window.removeEventListener('scroll', scrollHandler);
       window.removeEventListener('resize', resizeHandler);
-    }
+    };
   }, []);
 };
 export default useFixElem;

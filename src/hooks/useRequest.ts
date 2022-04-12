@@ -1,5 +1,5 @@
 import { STATUS } from '../utils/const';
-import { requestType } from '../types/request';
+import { requestType } from '../types/requestTypes';
 
 const useRequest: requestType = async (url, dispatch, statusAction) => {
   try {

@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { iBurgerMenu } from 'types/iUi';
+import { TBurgerMenu } from 'types/uiTypes';
 
 import './AppBurgerMenu.scss';
 
-const AppBurgerMenu = ({ showMenu, closeMenu, openMenu }: iBurgerMenu) => {
+const AppBurgerMenu = ({ showMenu, closeMenu, openMenu }: TBurgerMenu) => {
   const changeShowMenu = () => {
     if (!showMenu) {
-      openMenu()
+      openMenu();
     } else {
-      closeMenu()
+      closeMenu();
     }
   };
   return (

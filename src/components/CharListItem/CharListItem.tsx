@@ -1,11 +1,14 @@
 import React from 'react';
 import useAppActions from 'hooks/useAppActions';
 
-import { iChar } from 'types/chars/iChars';
+import { motion } from 'framer-motion';
+
+import { TChar } from 'types/chars/charsTransformTypes';
 
 import './CharListItem.scss';
+import { MOTION } from '../../utils/const';
 
-const CharListItem = ({ chars }: { chars: iChar }) => {
+const CharListItem = ({ chars }: { chars: TChar }) => {
   const { name, thumbnail } = chars;
   const { setSelectedChar } = useAppActions();
 
@@ -16,10 +19,13 @@ const CharListItem = ({ chars }: { chars: iChar }) => {
   };
   const onMouseSelectedChar = () => {
     setSelectedChar(chars);
-  }
+  };
 
   return (
-    <li
+    <motion.li
+      initial={MOTION.INIT}
+      animate={MOTION.ANIMATE}
+      transition={MOTION.LIST_TRANSITION}
       className="char-list-item"
       tabIndex={0}
       onClick={onMouseSelectedChar}
@@ -29,7 +35,7 @@ const CharListItem = ({ chars }: { chars: iChar }) => {
         <img src={thumbnail} alt={name} />
       </div>
       <h2 className="char-list-item__title">{name}</h2>
-    </li>
+    </motion.li>
   );
 };
 

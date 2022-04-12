@@ -1,16 +1,16 @@
+import { TChar, TCharUrl } from '../types/chars/charsTransformTypes';
 import {
-  iChar,
-  iCharNotTransform,
-  iComicsNotTransform,
-  iUrl,
-  iUrlNotTransform,
-} from '../types/chars/iChars';
+  TCharComicsNotTransform,
+  TCharNotTransform,
+  TCharUrlNotTransform,
+} from '../types/chars/charsNotTransformTypes';
 
 const setDescription = (description: string) => {
   if (description.length) return description;
   return 'Description not found';
 };
-const setLinks = (urls: iUrlNotTransform[]): iUrl[] => {
+
+const setLinks = (urls: TCharUrlNotTransform[]): TCharUrl[] => {
   const links = [];
   for (let i = 0; i < 2; i++) {
     const link = {
@@ -23,12 +23,12 @@ const setLinks = (urls: iUrlNotTransform[]): iUrl[] => {
   return links;
 };
 
-const setComics = ({ items }: iComicsNotTransform) => {
+const setComics = ({ items }: TCharComicsNotTransform) => {
   if (!items.length) return [`This character doesn't have comics`];
   return items.map(({ name }) => name);
 };
 
-export default function _transformCharacters(data: iCharNotTransform): iChar {
+export default function _transformCharacters(data: TCharNotTransform): TChar {
   const { id, description, name, thumbnail, urls, comics } = data;
   return {
     id,

@@ -5,10 +5,11 @@ import useAppSelector from 'hooks/useAppSelector';
 import AppButton from '../UI/AppButton/AppButton';
 import AppLoading from '../UI/AppLoading/AppLoading';
 import AppErrorMessage from '../UI/AppErrorMessage/AppErrorMessage';
+import {motion} from 'framer-motion';
 
-import { iChar } from 'types/chars/iChars';
+import { TChar } from 'types/chars/charsTransformTypes';
 
-import { STATUS } from 'utils/const';
+import { MOTION, STATUS } from 'utils/const';
 
 import './RandomChar.scss';
 
@@ -29,13 +30,16 @@ const RandomChar = () => {
   );
 };
 
-function ViewChar({ char }: { char: iChar }) {
+function ViewChar({ char }: { char: TChar }) {
   let { name, description, thumbnail, links } = char;
   if (description.length > 200) {
     description = description.slice(0, 200) + '...';
   }
   return (
-    <div className="random-char__wrapper">
+    <motion.div
+      initial={MOTION.INIT}
+      animate={MOTION.ANIMATE}
+      className="random-char__wrapper">
       <div className="random-char__img">
         <img src={thumbnail} alt={name} />
       </div>
@@ -50,7 +54,7 @@ function ViewChar({ char }: { char: iChar }) {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

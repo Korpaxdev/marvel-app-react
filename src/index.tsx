@@ -1,10 +1,12 @@
 import React from 'react';
 import * as ReactDOMClient from 'react-dom/client';
-import App from './App';
-import { BrowserRouter as Router } from 'react-router-dom';
-import './scss/styles.scss';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import App from './App';
 import store from './redux/store';
+
+import './scss/styles.scss';
 
 const container = document.getElementById('root')!;
 const root = ReactDOMClient.createRoot(container);

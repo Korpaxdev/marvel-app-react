@@ -1,9 +1,13 @@
 import React from 'react';
-import AppPageDevelopment from '../components/UI/AppPageDevelopment/AppPageDevelopment';
+import AppBanner from '../components/UI/AppBanner/AppBanner';
+import ComicsLayout from '../layouts/ComicsLayout/ComicsLayout';
 
 const ComicsBookPage = () => {
   return (
-    <AppPageDevelopment />
+    <>
+      <AppBanner />
+      <ComicsLayout />
+    </>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import up from 'assets/up.svg';
+
 import './AppButtonUp.scss';
 
 const AppButtonUp = () => {
@@ -20,22 +21,21 @@ const AppButtonUp = () => {
     }
   };
   const setPaddingRight = () => {
-    const button = document.querySelector<HTMLButtonElement>('.button-up')
+    const button = document.querySelector<HTMLButtonElement>('.button-up');
     if (window.innerWidth > 1254 && button) {
-      const paddingRight = (window.innerWidth - 1254) / 2
-      button.style.right = paddingRight + 'px'
+      const paddingRight = (window.innerWidth - 1254) / 2;
+      button.style.right = paddingRight + 'px';
+    } else if (window.innerWidth <= 1254 && button) {
+      button.style.right = '';
     }
-    else if (window.innerWidth <= 1254 && button) {
-      button.style.right = ''
-    }
-  }
+  };
   useEffect(() => {
     window.addEventListener('scroll', changeVisibility);
-    window.addEventListener('resize', setPaddingRight)
-    setPaddingRight()
+    window.addEventListener('resize', setPaddingRight);
+    setPaddingRight();
     return () => {
-      window.removeEventListener('scroll', changeVisibility)
-    }
+      window.removeEventListener('scroll', changeVisibility);
+    };
   }, []);
 
   return (

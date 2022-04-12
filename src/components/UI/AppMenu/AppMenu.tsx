@@ -2,11 +2,11 @@ import React from 'react';
 import useAppSelector from 'hooks/useAppSelector';
 import { NavLink } from 'react-router-dom';
 
-import { iMenu } from 'types/iUi';
+import { TMenu } from 'types/uiTypes';
 
 import './AppMenu.scss';
 
-const Menu = ({ showMenu, closeMenu }: iMenu) => {
+const Menu = ({ showMenu, closeMenu }: TMenu) => {
   const type = useAppSelector(({ screen }) => screen.type);
 
   return (

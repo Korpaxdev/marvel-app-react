@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  tCloseModal,
-  tInitialStateCharInfo,
-  tSetSelectedChar,
-} from 'types/chars/charInfo';
 
-const initialState: tInitialStateCharInfo = {
+import {
+  TCloseModal,
+  TInitialStateCharInfo,
+  TSetSelectedChar,
+} from 'types/chars/charInfoTypes';
+
+const initialState: TInitialStateCharInfo = {
   selectedChar: null,
   isOpen: false,
 };
@@ -14,14 +15,14 @@ const charInfoSlice = createSlice({
   name: 'charInfo',
   initialState,
   reducers: {
-    setSelectedChar: (state, { payload }:tSetSelectedChar) => {
+    setSelectedChar: (state, { payload }: TSetSelectedChar) => {
       state.selectedChar = payload;
       state.isOpen = true;
     },
-    closeModal: (state, action:tCloseModal) => {
+    closeModal: (state, action: TCloseModal) => {
       state.isOpen = false;
-    }
-  }
-})
-export const {reducer: charInfoReducer, actions: charInfoActions} = charInfoSlice
-
+    },
+  },
+});
+export const { reducer: charInfoReducer, actions: charInfoActions } =
+  charInfoSlice;

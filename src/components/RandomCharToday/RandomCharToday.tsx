@@ -1,12 +1,12 @@
 import React from 'react';
 import useAppSelector from 'hooks/useAppSelector';
+import useAppActions from 'hooks/useAppActions';
 
 import AppButton from '../UI/AppButton/AppButton';
 
 import { BUTTONS_LABEL, STATUS } from 'utils/const';
 
 import './RandomCharToday.scss';
-import useAppActions from '../../hooks/useAppActions';
 
 const RandomCharToday = () => {
   const status = useAppSelector(({ charRandom }) => charRandom.status);

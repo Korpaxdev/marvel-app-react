@@ -1,0 +1,30 @@
+@import "src/scss/modules/variables";
+
+.comics-list {
+  list-style-type: none;
+  display: grid;
+  column-gap: 20px;
+  row-gap: 50px;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: space-between;
+  &__button {
+    margin-top: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: #{$tablet}px) {
+    grid-template-columns: repeat(2, 290px);
+    justify-content: center;
+  }
+  @media (max-width: #{$mobile}px) {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+  @media (max-width: #{$tablet}px) {
+    &__button {
+      margin-top: calc(30px + (80 - 30) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+    }
+  }
+}

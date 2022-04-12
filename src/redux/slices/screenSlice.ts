@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { tScreenChangeType, tScreenInitialState } from '../../types/screen';
+
+import { tScreenChangeType, tScreenInitialState } from 'types/screenTypes';
 
 const initialState: tScreenInitialState = {
   type: '',

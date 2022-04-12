@@ -1,21 +1,22 @@
 import React, { useEffect, useRef } from 'react';
 import useAppSelector from 'hooks/useAppSelector';
+import useAppActions from 'hooks/useAppActions';
 import useFixElem from 'hooks/useFixElem';
+
 import AppButton from '../UI/AppButton/AppButton';
 import AppSkeleton from '../UI/AppSkeleton/AppSkeleton';
 
-import { iChar } from 'types/chars/iChars';
+import { TChar } from 'types/chars/charsTransformTypes';
 
 import { SCREEN_TYPE } from 'utils/const';
 
 import './CharInfo.scss';
-import useAppActions from '../../hooks/useAppActions';
+import { motion } from 'framer-motion';
 
 const CharInfo = () => {
   const { selectedChar, isOpen } = useAppSelector((state) => state.charInfo);
   const type = useAppSelector(({ screen }) => screen.type);
   const charInfo = useRef<HTMLDivElement | null>(null);
-
   useFixElem(charInfo);
 
   useEffect(() => {
@@ -29,34 +30,36 @@ const CharInfo = () => {
   }, [isOpen, type]);
 
   return (
-    <div
-      className={isOpen ? `char-info char-info_active` : `char-info`}
-      ref={charInfo}
-    >
-      {selectedChar && isOpen ? (
-        <ViewCharInfo selectedChar={selectedChar} />
-      ) : (
-        <AppSkeleton />
-      )}
-    </div>
+      <div
+        className={isOpen ? `char-info char-info_active` : `char-info`}
+        ref={charInfo}
+      >
+        {selectedChar ? (
+          <ViewCharInfo selectedChar={selectedChar}/>
+        ) : (
+          <AppSkeleton />
+        )}
+      </div>
   );
 };
 
-const ViewCharInfo = ({
-  selectedChar
-}: {
-  selectedChar: iChar;
-}) => {
-  const {closeModal} = useAppActions()
+const ViewCharInfo = ({ selectedChar }: { selectedChar: TChar }) => {
+  const { closeModal } = useAppActions();
+  const {type} = useAppSelector(state => state.screen)
   let { name, thumbnail, description, links, comics } = selectedChar;
   if (comics.length > 5) {
     comics = comics.slice(0, 5);
   }
   return (
-    <div className="char-info__wrapper">
-      <div className="char-info__overlay" onClick={()=>closeModal()}></div>
+    <motion.div
+      initial={type==='DESKTOP' ? {opacity: 0} : false}
+      animate={type==='DESKTOP' ? {opacity: 1} : false}
+      className="char-info__wrapper"
+      key={name}
+    >
+      <div className="char-info__overlay" onClick={() => closeModal()}></div>
       <div className="char-info__content">
-        <button className="char-info__close" onClick={()=>closeModal()}>
+        <button className="char-info__close" onClick={() => closeModal()}>
           X
         </button>
         <div className="char-info__head">
@@ -84,7 +87,7 @@ const ViewCharInfo = ({
           ))}
         </ul>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export default CharInfo;

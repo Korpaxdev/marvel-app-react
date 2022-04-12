@@ -34,10 +34,20 @@ export enum ACTIONS {
 
 export const CHARS_LIMIT = 9;
 export const CHARS__OFFSET = 0;
+export const COMICS_LIMIT = 8;
+export const COMICS_OFFSET = 0;
 
 export enum BUTTONS_LABEL {
   LOADING = 'LOADING...',
   TRY_IT = 'TRY IT',
   LOAD_MORE = 'LOAD MORE',
-  ENDED = 'CHAR LIST IS ENDED',
+  CHAR_ENDED = 'CHAR LIST IS ENDED',
+  COMICS_ENDED = 'COMICS LIST IS ENDED'
+
+}
+export const NOT_FOR_SELL = 'NOT FOR SELL'
+export const MOTION = {
+  INIT: {opacity: 0},
+  ANIMATE: {opacity: 1},
+  LIST_TRANSITION: { duration: 0.1, ease: 'easeIn' }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import useAppSelector from 'hooks/useAppSelector';
-
+import useAppActions from '../../hooks/useAppActions';
 import CharListItem from '../CharListItem/CharListItem';
 import AppLoading from '../UI/AppLoading/AppLoading';
 import AppErrorMessage from '../UI/AppErrorMessage/AppErrorMessage';
@@ -9,7 +9,6 @@ import AppButton from '../UI/AppButton/AppButton';
 import { BUTTONS_LABEL, STATUS } from 'utils/const';
 
 import './CharsList.scss';
-import useAppActions from '../../hooks/useAppActions';
 
 const CharsList = () => {
   const { chars, status, isEnded } = useAppSelector(({ charList }) => charList);
@@ -20,7 +19,7 @@ const CharsList = () => {
     if (status === STATUS.LOADING) {
       return BUTTONS_LABEL.LOADING;
     } else if (isEnded) {
-      return BUTTONS_LABEL.ENDED;
+      return BUTTONS_LABEL.CHAR_ENDED;
     }
     return BUTTONS_LABEL.LOAD_MORE;
   }, [status, isEnded]);

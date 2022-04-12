@@ -1,6 +1,6 @@
 import React from 'react';
 
-export interface iButton {
+export type TButton = {
   as: 'button' | 'a';
   type: string;
   href?: string;
@@ -9,12 +9,12 @@ export interface iButton {
   disabled?: boolean;
 }
 
-export interface iMenu {
+export type TMenu = {
   showMenu: boolean;
   closeMenu: () => void;
 }
 
-export interface iBurgerMenu {
+export type TBurgerMenu = {
   showMenu: boolean;
   closeMenu: () => void;
   openMenu: () => void;

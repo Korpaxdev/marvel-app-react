@@ -29,7 +29,10 @@ const Footer = () => {
         </a>
       </div>
       <h3 className="footer__title">
-        Developed by <a href="mailto:korpaxdev@gmail.com" className='footer__dev-link'>Korpaxdev</a>
+        Developed by{' '}
+        <a href="mailto:korpaxdev@gmail.com" className="footer__dev-link">
+          Korpaxdev
+        </a>
       </h3>
     </footer>
   );
