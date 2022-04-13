@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import useAppSelector from 'hooks/useAppSelector';
-import useFixElem from 'hooks/useFixElem';
 import useAppActions from 'hooks/useAppActions';
 
 import AppSkeleton from '../UI/AppSkeleton/AppSkeleton';
@@ -15,7 +14,6 @@ const CharInfo = () => {
   const { type } = useAppSelector((state) => state.screen);
   const { closeSelectedCharModal } = useAppActions();
   const charInfo = useRef<HTMLDivElement | null>(null);
-  useFixElem(charInfo);
   useEffect(() => {
     if (type === SCREEN_TYPE.DESKTOP) {
       closeSelectedCharModal();
@@ -26,11 +24,13 @@ const CharInfo = () => {
       className={isOpen ? `char-info char-info_active` : `char-info`}
       ref={charInfo}
     >
-      {selectedChar ? (
-        <ViewCharInfo selectedChar={selectedChar} />
-      ) : (
-        <AppSkeleton />
-      )}
+      <div className="char-info__wrapper">
+        {selectedChar ? (
+          <ViewCharInfo selectedChar={selectedChar} />
+        ) : (
+          <AppSkeleton />
+        )}
+      </div>
     </div>
   );
 };

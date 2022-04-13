@@ -20,7 +20,7 @@ const ViewCharInfo = ({ selectedChar }: { selectedChar: TChar }) => {
     <motion.div
       initial={type === 'DESKTOP' ? { opacity: 0 } : false}
       animate={type === 'DESKTOP' ? { opacity: 1 } : false}
-      className="char-info__wrapper"
+      className="char-info__body"
       key={name}
     >
       <div className="char-info__overlay" onClick={() => closeSelectedCharModal()}></div>

@@ -2,8 +2,9 @@
 
 .char-info {
   width: 100%;
-  height: min-content;
   &__wrapper {
+    position: sticky;
+    top: 0;
   }
   &__content {
     padding: 25px;
@@ -114,6 +115,9 @@
     &_active {
       visibility: visible;
       opacity: 1;
+    }
+    &__wrapper {
+      position: static;
     }
     &__content {
       position: absolute;
