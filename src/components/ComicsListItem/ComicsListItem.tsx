@@ -1,25 +1,34 @@
 import React, { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { TComicsList } from 'types/comics/comicsTranformTypes';
 import {motion} from 'framer-motion';
 
-import { MOTION } from 'utils/const';
+import { TComic } from 'types/comics/comicsTranformTypes';
 
+import { MOTION } from 'utils/const';
 import './ComicsListItem.scss';
 
 interface IComicsListItem {
-  comicBook: TComicsList;
+  comicBook: TComic;
 }
 
 const ComicsListItem: FC<IComicsListItem> = ({ comicBook }) => {
-  let { thumbnail, title, price } = comicBook;
+  const navigate = useNavigate()
+  let { thumbnail, title, price, inApiId } = comicBook;
   if (title.length > 50) title = title.slice(0, 50) + '...';
+
+  const onHandleComicClick = () => {
+    navigate(`/comics/${inApiId}`)
+  }
+
   return (
     <motion.li
       initial={MOTION.INIT}
       animate={MOTION.ANIMATE}
       transition={MOTION.LIST_TRANSITION}
-      className="comic-book">
+      className="comic-book"
+      onClick={onHandleComicClick}
+    >
       <div className="comic-book__img">
         <img src={thumbnail} alt={title} />
       </div>

@@ -6,7 +6,7 @@
   // .characters-layout__wrapper
   &__wrapper {
     display: flex;
-    gap: 50px
+    gap: 50px;
   }
 
   @media (max-width: #{$container}px) {

@@ -8,3 +8,4 @@ export type TInitialStateCharInfo = {
 };
 export type TSetSelectedChar = PayloadAction<TChar>;
 export type TCloseModal = PayloadAction<void>;
+export type TOpenModal = PayloadAction<void>

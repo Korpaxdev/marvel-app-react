@@ -9,8 +9,10 @@ const useRequest: requestType = async (url, dispatch, statusAction) => {
       const data = await response.json();
       dispatch(statusAction(STATUS.DONE));
       return data;
+    } else if (response.status === 404) {
+      dispatch(statusAction(STATUS.NOT_FOUND));
     } else {
-      dispatch(statusAction(STATUS.ERROR));
+      dispatch(statusAction(STATUS.ERROR))
     }
   } catch (e) {
     dispatch(statusAction(STATUS.ERROR));

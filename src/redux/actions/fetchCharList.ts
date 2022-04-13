@@ -1,5 +1,5 @@
 import useRequest from 'hooks/useRequest';
-import _transformCharacters from 'utils/_transformCharacters';
+import _transformCharacters from 'utils/characters/_transformCharacters';
 
 import { charListActions } from '../slices/charListSlice';
 import { API, CHARS_LIMIT } from 'utils/const';

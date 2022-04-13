@@ -10,7 +10,7 @@ import { MOTION } from 'utils/const';
 
 const AppBanner = () => {
   return (
-    <motion.div
+    <motion.section
       initial={MOTION.INIT}
       animate={MOTION.ANIMATE}
       className="banner">
@@ -31,7 +31,7 @@ const AppBanner = () => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

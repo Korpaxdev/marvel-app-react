@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import useAppSelector from 'hooks/useAppSelector';
-import useAppActions from '../../hooks/useAppActions';
+import useAppActions from 'hooks/useAppActions';
 import CharListItem from '../CharListItem/CharListItem';
 import AppLoading from '../UI/AppLoading/AppLoading';
 import AppErrorMessage from '../UI/AppErrorMessage/AppErrorMessage';

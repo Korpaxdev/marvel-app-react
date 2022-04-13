@@ -1,4 +1,4 @@
-import _transformComics from 'utils/_transformComics';
+import _transformComics from 'utils/comics/_transformComics';
 import useRequest from 'hooks/useRequest';
 
 import { comicsListAction } from '../slices/comicsListSlice';

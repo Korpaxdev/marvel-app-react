@@ -7,6 +7,7 @@ import AppButtonUp from './components/UI/AppButtonUp/AppButtonUp';
 import Header from './components/Header/Header';
 import ComicsBookPage from './pages/ComicsBookPage';
 import Footer from './components/Footer/Footer';
+import ComicInfoPage from './pages/ComicInfoPage';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<CharactersPage />} />
           <Route path="/comics" element={<ComicsBookPage />} />
+          <Route path="/comics/:id" element={<ComicInfoPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

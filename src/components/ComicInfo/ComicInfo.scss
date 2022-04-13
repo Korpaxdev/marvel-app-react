@@ -1,0 +1,145 @@
+@import "src/scss/modules/variables";
+
+.comic-info {
+  padding: 100px 0;
+  // .comic-info__wrapper
+  &__wrapper {
+    display: flex;
+    gap: 50px;
+  }
+
+  // .comic-info__img
+  &__img {
+    flex: 0 0 390px;
+    width: 390px;
+    max-height: 600px;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      object-fit: fill;
+    }
+  }
+
+  // .comic-info__body
+  &__body {
+    position: relative;
+    flex: 1 1 auto;
+  }
+
+  // .comic-info__title
+  &__title {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+    padding-right: 200px;
+  }
+
+  // .comic-info__description
+  &__description {
+    margin-top: 40px;
+    margin-bottom: 80px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    padding-right: 200px;
+  }
+
+  // .comic-info__prop
+  &__prop {
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 40px;
+  }
+
+  // .comic-info__price
+  &__price {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+
+    span {
+      font-size: 24px;
+      line-height: 28px;
+      color: $primary;
+    }
+  }
+  // .comic-info__button
+  &__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  @media (max-width: #{$container}px) {
+    &__button {
+      bottom: 0;
+      top:auto;
+      left: 0;
+    }
+    &__price {
+      margin-bottom: 90px;
+    }
+    &__title, &__description {
+      padding-right: 0;
+    }
+  }
+  @media (max-width: #{$tablet}px) {
+    padding: calc(30px + (100 - 30) * ((100vw - #{$end}px) / (#{$tablet} - #{$end}))) 0;
+   &__title {
+     font-size: calc(18px + (22 - 18) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+     line-height: calc(21px + (26 - 21) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+   }
+    &__description {
+      margin-top: calc(20px + (40 - 20) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      margin-bottom: calc(20px + (80 - 20) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      font-size: calc(14px + (18 - 14) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      line-height: calc(16px + (21 - 16) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+    }
+    &__prop {
+      margin-bottom: calc(15px + (40 - 15) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      font-size: calc(14px + (18 - 14) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      line-height: calc(16px + (21 - 16) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+    }
+    &__price {
+      font-size: calc(14px + (18 - 14) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      line-height: calc(16px + (21 - 16) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      margin-bottom: calc(70px + (90 - 70) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      span {
+        font-size: calc(18px + (24 - 18) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+        line-height: calc(21px + (28 - 21) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      }
+    }
+    &__img {
+      flex: 0 0 calc(200px + (390 - 200) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      width: calc(200px + (390 - 200) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      max-height: calc(300px + (600 - 300) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+    }
+    &__not-found {
+      &-title {
+        font-size: calc(18px + (22 - 18) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      }
+      &-button {
+        margin-top: calc(30px + (40 - 30) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+      }
+    }
+  }
+  @media (max-width: #{$mobile}px) {
+    &__wrapper {
+      flex-direction: column;
+      gap: 20px;
+    }
+    &__img {
+      flex: 0 0 auto;
+      align-self: center;
+    }
+    &__title {
+      text-align: center;
+    }
+    &__button {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

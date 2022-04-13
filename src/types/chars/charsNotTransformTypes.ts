@@ -6,6 +6,7 @@ export type TCharUrlNotTransform = {
 export type TCharComicsNotTransform = {
   items: {
     name: string;
+    resourceURI: string
   }[];
 }
 export type TCharNotTransform = {

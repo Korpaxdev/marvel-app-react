@@ -1,0 +1,12 @@
+.comic-info {
+  // .comic-info__error
+  &__error {
+  }
+  // .comic-info__error-button
+  &__error-button {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

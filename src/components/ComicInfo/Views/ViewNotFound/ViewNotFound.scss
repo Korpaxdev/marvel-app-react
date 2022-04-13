@@ -1,0 +1,22 @@
+@import "src/scss/modules/variables";
+
+.comic-info__not-found {
+
+  &-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+
+    span {
+      color: $primary;
+    }
+  }
+
+  &-button {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

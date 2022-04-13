@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   TCloseModal,
   TInitialStateCharInfo,
+  TOpenModal,
   TSetSelectedChar,
 } from 'types/chars/charInfoTypes';
 
@@ -17,10 +18,14 @@ const charInfoSlice = createSlice({
   reducers: {
     setSelectedChar: (state, { payload }: TSetSelectedChar) => {
       state.selectedChar = payload;
-      state.isOpen = true;
     },
-    closeModal: (state, action: TCloseModal) => {
+    openSelectedCharModal: (state, action: TOpenModal) => {
+      state.isOpen = true;
+      document.body.style.overflow = 'hidden';
+    },
+    closeSelectedCharModal: (state, action: TCloseModal) => {
       state.isOpen = false;
+      document.body.style.overflow = '';
     },
   },
 });

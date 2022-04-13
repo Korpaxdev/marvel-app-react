@@ -1,23 +1,28 @@
 import React from 'react';
 import useAppActions from 'hooks/useAppActions';
+import useAppSelector from 'hooks/useAppSelector';
 
 import { motion } from 'framer-motion';
 
 import { TChar } from 'types/chars/charsTransformTypes';
 
+import { MOTION, SCREEN_TYPE } from 'utils/const';
+
 import './CharListItem.scss';
-import { MOTION } from '../../utils/const';
 
 const CharListItem = ({ chars }: { chars: TChar }) => {
   const { name, thumbnail } = chars;
-  const { setSelectedChar } = useAppActions();
+  const { type } = useAppSelector((state) => state.screen);
+  const { setSelectedChar, openSelectedCharModal } = useAppActions();
 
   const onKeyPressSelectedChar = (e: React.KeyboardEvent<HTMLLIElement>) => {
     if (e.code === 'Enter') {
+      if (type !== SCREEN_TYPE.DESKTOP) openSelectedCharModal();
       setSelectedChar(chars);
     }
   };
   const onMouseSelectedChar = () => {
+    if (type !== SCREEN_TYPE.DESKTOP) openSelectedCharModal();
     setSelectedChar(chars);
   };
 

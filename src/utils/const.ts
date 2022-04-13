@@ -13,6 +13,7 @@ export enum STATUS {
   LOADING = 'LOADING',
   ERROR = 'ERROR',
   DONE = 'DONE',
+  NOT_FOUND = 'NOT_FOUND',
 }
 
 export enum MEDIA_QUERIES {
@@ -42,12 +43,20 @@ export enum BUTTONS_LABEL {
   TRY_IT = 'TRY IT',
   LOAD_MORE = 'LOAD MORE',
   CHAR_ENDED = 'CHAR LIST IS ENDED',
-  COMICS_ENDED = 'COMICS LIST IS ENDED'
+  COMICS_ENDED = 'COMICS LIST IS ENDED',
+}
 
-}
-export const NOT_FOR_SELL = 'NOT FOR SELL'
+export const NOT_FOR_SELL = 'NOT FOR SELL';
+
+export const NO_DESCRIPTION = {
+  COMIC: `This comic book doesn't have a description`,
+  CHAR: `This character doesn't have a description`,
+};
+export const CHAR_NO_COMICS = `This character doesn't have comics`
+export const COMIC_NO_PAGE_COUNT = `This comic book doesn't have a page count`;
+
 export const MOTION = {
-  INIT: {opacity: 0},
-  ANIMATE: {opacity: 1},
-  LIST_TRANSITION: { duration: 0.1, ease: 'easeIn' }
-}
+  INIT: { opacity: 0 },
+  ANIMATE: { opacity: 1 },
+  LIST_TRANSITION: { duration: 0.1, ease: 'easeIn' },
+};

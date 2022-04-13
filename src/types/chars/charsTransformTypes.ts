@@ -11,5 +11,8 @@ export type TChar = {
   description: string;
   thumbnail: string;
   links: TCharUrl[];
-  comics: string[];
+  comics: {
+    name: string,
+    id?: string
+  }[];
 }

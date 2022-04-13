@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { TComicsList } from 'types/comics/comicsTranformTypes';
+import { TComic } from 'types/comics/comicsTranformTypes';
 import {
   TComicsListInitialState,
   TSetComicList,
@@ -29,7 +29,7 @@ const comicsListSlice = createSlice({
         state.comics = [...state.comics, ...payload.comics];
         state.offset = payload.offset;
       },
-      prepare: (comics: TComicsList[], offset: number) => ({
+      prepare: (comics: TComic[], offset: number) => ({
         payload: { comics, offset },
       }),
     },

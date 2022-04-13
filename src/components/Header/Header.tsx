@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useAppSelector from 'hooks/useAppSelector';
+import { Link } from 'react-router-dom';
 
 import Menu from '../UI/AppMenu/AppMenu';
 import AppBurgerMenu from '../UI/AppBurgerMenu/AppBurgerMenu';
@@ -23,9 +24,9 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <nav className="header__nav">
-          <a href="#" className="header__logo">
+          <Link to='/' className="header__logo">
             <span>Marvel</span> information portal
-          </a>
+          </Link>
           <Menu showMenu={showMenu} closeMenu={closeMenu} />
           {type === 'MOBILE' ? (
             <AppBurgerMenu

@@ -7,6 +7,7 @@ import {comicsListAction} from '../redux/slices/comicsListSlice';
 import fetchCharList from 'redux/actions/fetchCharList';
 import fetchRandomChar from '../redux/actions/fetchRandomChar';
 import fetchComicsList from '../redux/actions/fetchComicsList';
+import getComicInfo from '../redux/actions/getComicInfo';
 
 const useAppActions = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const useAppActions = () => {
       fetchCharList,
       fetchRandomChar,
       fetchComicsList,
+      fetchComicInfo: getComicInfo,
       ...charListActions,
       ...screenActions,
       ...charInfoActions,

@@ -1,10 +1,10 @@
-export type TComicsList = {
+export type TComic = {
   id: string;
+  inApiId: number;
   title: string;
   description: string | null;
-  pageCount: number;
+  pageCount: string;
   price: string;
   thumbnail: string;
   language: string;
 };
-
