@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import useResponsiveType from './hooks/useResponsiveType';
 
+// -------------------> Components <------------------- //
 import CharactersPage from './pages/CharactersPage';
 import AppButtonUp from './components/UI/AppButtonUp/AppButtonUp';
 import Header from './components/Header/Header';
-import ComicsBookPage from './pages/ComicsBookPage';
 import Footer from './components/Footer/Footer';
-import ComicInfoPage from './pages/ComicInfoPage';
+import AppLoading from './components/UI/AppLoading/AppLoading';
+
+// -------------------> Lazy loading <------------------- //
+const ComicsBookPage = lazy(() => import('./pages/ComicsBookPage'));
+const ComicInfoPage = lazy(() => import('./pages/ComicInfoPage'));
 
 const App = () => {
   useResponsiveType();
   return (
-    <>
+    <Suspense fallback={<AppLoading />}>
       <Header />
       <main>
         <Routes>
@@ -24,7 +28,7 @@ const App = () => {
       </main>
       <Footer />
       <AppButtonUp />
-    </>
+    </Suspense>
   );
 };
 
