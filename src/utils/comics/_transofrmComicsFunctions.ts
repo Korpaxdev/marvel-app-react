@@ -1,4 +1,4 @@
-import { TComicsLanguageNotTransform, TComicsPricesNotTransform } from '../../types/comics/comicsNotTransformTypes';
+import { TComicsLanguageNotTransform, TComicsPricesNotTransform } from 'types/comics/comicsNotTransformTypes';
 import { NO_DESCRIPTION, COMIC_NO_PAGE_COUNT, NOT_FOR_SELL } from '../const';
 
 const setPrice = (prices: TComicsPricesNotTransform) => {

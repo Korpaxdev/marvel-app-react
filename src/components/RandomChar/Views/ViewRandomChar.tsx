@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AppButton from '../../UI/AppButton/AppButton';
+import AppButton from 'components/UI/AppButton/AppButton';
 import { motion } from 'framer-motion';
 
 import { TChar } from 'types/chars/charsTransformTypes';

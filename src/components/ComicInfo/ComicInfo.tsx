@@ -16,7 +16,7 @@ import './ComicInfo.scss';
 const ComicInfo = () => {
   const { id } = useParams();
   const { status, comic } = useAppSelector((state) => state.comicInfo);
-  const { fetchComicInfo } = useAppActions();
+  const { getComicInfo } = useAppActions();
 
   const content = useMemo(() => {
     switch (status) {
@@ -32,7 +32,7 @@ const ComicInfo = () => {
   }, [status, comic]);
 
   useEffect(() => {
-    fetchComicInfo(id!);
+    getComicInfo(id!);
   }, []);
   return (
     <motion.section

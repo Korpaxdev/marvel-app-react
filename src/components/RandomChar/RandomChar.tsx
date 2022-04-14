@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import useAppActions from '../../hooks/useAppActions';
+import useAppActions from 'hooks/useAppActions';
 import useAppSelector from 'hooks/useAppSelector';
 import AppLoading from '../UI/AppLoading/AppLoading';
 import AppErrorMessage from '../UI/AppErrorMessage/AppErrorMessage';

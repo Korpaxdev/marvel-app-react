@@ -9,7 +9,6 @@ import ComicsBookPage from './pages/ComicsBookPage';
 import Footer from './components/Footer/Footer';
 import ComicInfoPage from './pages/ComicInfoPage';
 
-
 const App = () => {
   useResponsiveType();
   return (

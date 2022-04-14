@@ -2,9 +2,9 @@ import React from 'react';
 
 import RandomChar from 'components/RandomChar/RandomChar';
 import RandomCharToday from 'components/RandomCharToday/RandomCharToday';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 
-import { MOTION } from '../../utils/const';
+import { MOTION } from 'utils/const';
 
 import './RandomLayout.scss';
 
@@ -13,7 +13,8 @@ const RandomLayout = () => {
     <motion.section
       initial={MOTION.INIT}
       animate={MOTION.ANIMATE}
-      className="random-layout">
+      className="random-layout"
+    >
       <div className="container">
         <div className="random-layout__wrapper">
           <RandomChar />

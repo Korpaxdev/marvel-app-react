@@ -1,6 +1,6 @@
 import { nanoid } from '@reduxjs/toolkit';
-import { TComicsListNotTransform } from '../../types/comics/comicsNotTransformTypes';
-import { TComic } from '../../types/comics/comicsTranformTypes';
+import { TComicsListNotTransform } from 'types/comics/comicsNotTransformTypes';
+import { TComic } from 'types/comics/comicsTranformTypes';
 import { setDescription, setLanguage, setPageCount, setPrice } from './_transofrmComicsFunctions';
 
 const _transformComics = (comics: TComicsListNotTransform): TComic => {

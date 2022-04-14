@@ -9,10 +9,15 @@ export type TCharListInitialState = {
   status: string;
   offset: number;
   isEnded: boolean;
-}
-export type TSetCharListAction = PayloadAction<{chars:TChar[], offset:number}>
-export type TSetCharListStatusAction = PayloadAction<STATUS>
-export type TSetCharListEnded = PayloadAction<void>
+};
+export type TSetCharListAction = PayloadAction<{
+  chars: TChar[];
+  offset: number;
+}>;
+export type TSetCharListStatusAction = PayloadAction<STATUS>;
+export type TSetCharListEnded = PayloadAction<void>;
 
-export type TCharsListAction = TSetCharListAction | TSetCharListStatusAction | TSetCharListEnded
-
+export type TCharsListAction =
+  | TSetCharListAction
+  | TSetCharListStatusAction
+  | TSetCharListEnded;

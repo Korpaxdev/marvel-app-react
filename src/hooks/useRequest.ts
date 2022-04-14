@@ -12,7 +12,7 @@ const useRequest: requestType = async (url, dispatch, statusAction) => {
     } else if (response.status === 404) {
       dispatch(statusAction(STATUS.NOT_FOUND));
     } else {
-      dispatch(statusAction(STATUS.ERROR))
+      dispatch(statusAction(STATUS.ERROR));
     }
   } catch (e) {
     dispatch(statusAction(STATUS.ERROR));

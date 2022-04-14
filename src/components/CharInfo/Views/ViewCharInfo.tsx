@@ -13,8 +13,8 @@ const ViewCharInfo = ({ selectedChar }: { selectedChar: TChar }) => {
   const { closeSelectedCharModal } = useAppActions();
   const { type } = useAppSelector((state) => state.screen);
   let { name, thumbnail, description, links, comics } = selectedChar;
-  if (comics.length > 5) {
-    comics = [...comics.slice(0, 5), { name: 'And others...' }];
+  if (comics.length > 10) {
+    comics = [...comics.slice(0, 10), { name: 'And others...' }];
   }
   return (
     <motion.div

@@ -1,4 +1,4 @@
-@import "src/scss/modules/variables";
+@import 'src/scss/modules/variables';
 .random-layout {
   // .random-layout__wrapper
   &__wrapper {
@@ -6,10 +6,14 @@
     grid-template-columns: repeat(2, 1fr);
   }
   @media (max-width: #{$container}px) {
-    margin-top: calc(40px + (0 - 40) * ((100vw - #{$tablet}px) / (#{$container} - #{$tablet})));
+    margin-top: calc(
+      40px + (0 - 40) * ((100vw - #{$tablet}px) / (#{$container} - #{$tablet}))
+    );
   }
   @media (max-width: #{$tablet}px) {
-    margin-top: calc(30px + (40 - 30) * ((100vw - #{$end}px) / (#{$tablet} - #{$end})));
+    margin-top: calc(
+      30px + (40 - 30) * ((100vw - #{$end}px) / (#{$tablet} - #{$end}))
+    );
     &__wrapper {
       grid-template-columns: 600px;
       justify-content: center;
@@ -21,4 +25,3 @@
     }
   }
 }
-

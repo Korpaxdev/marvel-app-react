@@ -1,4 +1,4 @@
-@import "src/scss/modules/variables";
+@import 'src/scss/modules/variables';
 
 .char-info {
   width: 100%;
@@ -39,7 +39,6 @@
 
   // .char-info__head-right
   &__head-right {
-
   }
 
   // .char-info__title
@@ -47,7 +46,6 @@
     font-weight: 700;
     font-size: 22px;
     line-height: 26px;
-
   }
 
   // .char-info__btns
@@ -111,7 +109,7 @@
     top: 0;
     z-index: 10;
     opacity: 0;
-    transition: all .4s ease;
+    transition: all 0.4s ease;
     &_active {
       visibility: visible;
       opacity: 1;

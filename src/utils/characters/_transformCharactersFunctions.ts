@@ -2,7 +2,7 @@ import {
   TCharComicsNotTransform,
   TCharUrlNotTransform,
 } from 'types/chars/charsNotTransformTypes';
-import { TCharUrl } from 'types/chars/charsTransformTypes';
+import { TCharUrl, TCharUrlType } from 'types/chars/charsTransformTypes';
 import { CHAR_NO_COMICS, NO_DESCRIPTION } from '../const';
 
 const setDescription = (description: string) => {
@@ -16,7 +16,7 @@ const setLinks = (urls: TCharUrlNotTransform[]): TCharUrl[] => {
     const link = {
       label: urls[i].type,
       url: urls[i].url,
-      type: i === 0 ? 'primary' : 'secondary',
+      type: i === 0 ? 'primary' : 'secondary' as TCharUrlType,
     };
     links.push(link);
   }

@@ -1,9 +1,9 @@
-
 export type TCharUrl = {
   label: string;
   url: string;
-  type: string;
-}
+  type: TCharUrlType;
+};
+export type TCharUrlType = 'primary' | 'secondary'
 
 export type TChar = {
   id: number;
@@ -12,7 +12,7 @@ export type TChar = {
   thumbnail: string;
   links: TCharUrl[];
   comics: {
-    name: string,
-    id?: string
+    name: string;
+    id?: string;
   }[];
-}
+};
